@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Skizzors</title>
+</head>
+<body>
+    <script>
+        let humanScore = 0;
+        let computerScore = 0;
+
+        function playRound(humanChoice, computerChoice) {
+            // equivalent choices are always draws
+            if (humanChoice === computerChoice){
+                console.log("It's a tie!!! You'll get em\' next time");
+            }
+        }
+
+        function getUserChoice() {
+            let response = console.prompt("Rock, Paper, or Skizzors?");
+
+            // compares the user reponse case insensitively
+            switch (response.toLowerCase()) {
+                case "rock" || "r":
+                    return "Rock";
+                    break;
+                case "paper" || "p":
+                    return "Paper";
+                    break;
+                case "skizzors" || "s":
+                    return "Skizzors";
+                    break;
+            }
+        }
+
+        function getComputerChoice() {
+            // gets a random number between 0-3
+            switch (Math.floor(Math.random() * 3)) {
+                case 0:
+                    return "Rock";
+                    break;
+                case 1:
+                    return "Paper";
+                    break;
+                case 2:
+                    return "Skizzors";
+                    break;
+                default:
+                    return "Skizzors";
+            }
+
+        }
+    </script>
+</body>
+</html>
