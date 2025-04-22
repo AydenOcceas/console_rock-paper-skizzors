@@ -7,10 +7,29 @@
 </head>
 <body>
     <script>
+
         let humanScore = 0;
         let computerScore = 0;
 
-        playRound(getUserChoice(), getComputerChoice());
+        playGame();
+
+        function playGame(){
+
+            for (let i = 0; i < 5; i++){
+                playRound(getUserChoice(), getComputerChoice());
+                console.log(`Player: ${humanScore} Computer: ${computerScore}. Next round!`);
+            }
+
+            if (humanScore === computerScore){
+                console.log("It's a tie, better luck next time.");
+            } else if (humanScore > computerScore) {
+                console.log("You win! Congratulations");
+            } else {
+                console.log("you lose. womp.");
+            }
+
+            console.log(`Player: ${humanScore} Computer: ${computerScore}`);
+        }
 
         function playRound(humanChoice, computerChoice) {
             const humanVal = getChoiceVal(humanChoice);
@@ -59,6 +78,7 @@
             }
         }
 
+        // prompts the user to choose R, P or S
         function getUserChoice() {
             const response = prompt("Rock, Paper, or Skizzors?");
 
@@ -81,6 +101,7 @@
             }
         }
 
+        // Gets R, P, or S at random
         function getComputerChoice() {
             // gets a random number between 0-3
             switch (Math.floor(Math.random() * 3)) {
