@@ -21,6 +21,7 @@ function playGame(){
     console.log(`Player: ${humanScore} Computer: ${computerScore}`);
 }
 
+
 function playRound(humanChoice, computerChoice) {
     const humanVal = getChoiceVal(humanChoice);
     const computerVal = getChoiceVal(computerChoice);
@@ -54,58 +55,57 @@ function playRound(humanChoice, computerChoice) {
 // assigns each choice a numerical value
 function getChoiceVal(choice) {
     switch (choice) {
-        case "Rock":
+        case "rock":
             return 1;
             break;
-        case "Paper":
+        case "paper":
             return 2;
             break;
-        case "Skizzors":
-            return 3;
-            break;
-        default:
-            return 3;
-    }
-}
-
-// prompts the user to choose R, P or S
-function getUserChoice() {
-    const response = prompt("Rock, Paper, or Skizzors?");
-
-    // compares the user reponse case insensitively
-    switch (response.toLowerCase()) {
-        case "rock":
-        case "r":
-            return "Rock";
-            break;
-        case "paper":
-        case "p":
-            return "Paper";
-            break;
         case "skizzors":
-        case "s":
-            return "Skizzors";
+            return 3;
             break;
         default:
-            return "Skizzors";
+            return 3;
     }
 }
+
+
+// use Event Delegation to get user choice from buttons
+let choices = document.querySelector('ul');
+
+choices.addEventListener("click", (e) => {
+    let choice = e.target;
+
+    switch (choice.id) {
+        case 'rock':
+            playRound('rock', getComputerChoice())
+            break;
+        case 'paper':
+            playRound('paper', getComputerChoice())
+            break;
+        case 'skizzors':
+            playRound('skizzors', getComputerChoice())
+            break;
+    }
+
+});
+
 
 // Gets R, P, or S at random
 function getComputerChoice() {
     // gets a random number between 0-3
     switch (Math.floor(Math.random() * 3)) {
         case 0:
-            return "Rock";
+            return "rock";
             break;
         case 1:
-            return "Paper";
+            return "paper";
             break;
         case 2:
-            return "Skizzors";
+            return "skizzors";
             break;
         default:
-            return "Skizzors";
+            return "skizzors";
     }
 
 }
